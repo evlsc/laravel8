@@ -34,7 +34,7 @@ Route::get('/account', function () { return view('pages/modules/accountManagemen
 Route::get('/get/account', [AccountController::class, 'getAccount']); 
 Route::get('/get/account/{id}', [AccountController::class, 'getSpecificAccount']); 
 Route::post('/add/account', [AccountController::class, 'addAccount']); 
-Route::post('/update/account', [AccountController::class, 'updateAccount']); 
+Route::put('/update/account/{id}', [AccountController::class, 'updateAccount']); 
 
 // Example
 Route::get('articles/{id}', function($id) {

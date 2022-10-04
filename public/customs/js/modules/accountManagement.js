@@ -147,12 +147,6 @@ $('#accountForm').on('submit', function (event) {
 	event.preventDefault();
     if($('#uuid').val() == ''){
         //Add data
-        console.log('add')
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        })
         $.ajax({
             url: "add/account",
             method: "POST",
@@ -162,26 +156,28 @@ $('#accountForm').on('submit', function (event) {
                 last_name: $('#lastname').val(),
             },
             dataType: 'json',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             success: function (data) {
                if(data.response == 'success'){
                     account()
                     toastr.success('Successful')
                     $("#modal-lg").modal('hide');
+
                }
             }
         })
     }else{
         //update data
         $.ajax({
-            url: "update/account",
-            method: "POST",
+            url: "update/account/" + $('#uuid').val(),
+            method: "PUT",
             data: {
-                id: $('#uuid').val(),
                 user_type: $('#user_type').val(),
                 first_name: $('#firstname').val(),
                 last_name: $('#lastname').val(),
             },
             dataType: 'json',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             success: function (data) {
                if(data.response == 'success'){
                     account()
@@ -227,3 +223,10 @@ editData = (id, type) => {
 		error: function (data) {},
 	});
 };
+
+
+$( ".clickClose" ).click(function() {
+    $('#accountForm').trigger("reset");
+    $(".submit").show();
+    $("#accountForm input, select, textarea").prop("disabled", false);
+  });

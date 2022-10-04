@@ -39,6 +39,16 @@ class AccountController extends Controller
         }
         return response()->json($response);
     }
-    public function updateAccount(Request $request){
+    public function updateAccount(Request $request, $id){
+        $query = DB::table('users')
+              ->where('id', $id)
+              ->update(['first_name' =>  $request->first_name, 
+              'last_name' =>  $request->last_name, 'user_type' =>  $request->user_type]);
+        if($query){
+                $response = array('response' => "success", 'message' => "success");
+            }else{
+                $response = array('response' => "error", 'message' => "error");
+            }
+        return response()->json($response);            
     }
 }

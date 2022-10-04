@@ -23,7 +23,7 @@
 
                 <div class="card-body">
                     <div class="col-12">
-                        <button type="submit" class="btn btn-default float-right" data-toggle="modal"
+                        <button type="submit" class="btn btn-default float-right clickClose" data-toggle="modal"
                             data-target="#modal-lg">Add User </button>
                     </div><br><br>
                     <table id="allAccount" class="table table-bordered table-striped">
@@ -47,7 +47,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title title"><i class="fas fa-user"></i> Create user</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close clickClose" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -76,7 +76,7 @@
                 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default clickClose" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary submit">Save changes</button>
                 </div>
             </form>
